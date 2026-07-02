@@ -1,0 +1,94 @@
+:root {
+    --bg-main: #0d1117;
+    --bg-surface: #161b22;
+    --bg-panel: #21262d;
+    --border-color: #30363d;
+    --text-primary: #c9d1d9;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --accent-hover: #3182ce;
+    
+    --tag-low: #238636;
+    --tag-medium: #d29922;
+    --tag-critical: #f85149;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+/* Layout */
+.app-layout { display: flex; height: 100vh; overflow: hidden; }
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.brand-header { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; color: var(--text-primary); }
+.side-nav { display: flex; flex-direction: column; gap: 8px; }
+.side-nav a { padding: 10px 14px; text-decoration: none; color: var(--text-muted); border-radius: 6px; transition: 0.2s; }
+.side-nav a:hover, .side-nav a.active { background-color: var(--bg-panel); color: var(--text-primary); }
+
+/* Main Board */
+.board-container { flex: 1; padding: 32px; display: flex; flex-direction: column; }
+.board-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; }
+.subtitle { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
+
+/* Buttons */
+.btn { border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; font-family: inherit; transition: 0.2s; }
+.btn-primary { background-color: var(--accent); color: #fff; }
+.btn-primary:hover { background-color: var(--accent-hover); }
+.full-width { width: 100%; }
+
+/* Kanban Columns */
+.kanban-board { display: flex; gap: 24px; flex: 1; min-height: 0; }
+.kanban-column { flex: 1; background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; display: flex; flex-direction: column; }
+.column-title { padding: 16px; font-size: 14px; font-weight: 600; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; }
+.count { background: var(--bg-panel); padding: 2px 8px; border-radius: 12px; font-size: 12px; }
+
+.task-list { padding: 16px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; min-height: 150px; }
+
+/* Task Cards */
+.task-card {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: 6px;
+    cursor: grab;
+    transition: transform 0.1s, border-color 0.2s;
+}
+.task-card:active { cursor: grabbing; transform: scale(0.98); }
+.task-card:hover { border-color: var(--accent); }
+.task-title { font-weight: 600; font-size: 14px; margin-bottom: 12px; }
+.task-meta { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-muted); }
+.tag { padding: 2px 8px; border-radius: 12px; font-weight: 600; color: #fff; text-transform: uppercase; font-size: 10px; }
+.tag.low { background-color: var(--tag-low); }
+.tag.medium { background-color: var(--tag-medium); }
+.tag.critical { background-color: var(--tag-critical); }
+
+/* Drag and Drop States */
+.task-list.drag-over { background-color: rgba(88, 166, 255, 0.05); }
+
+/* Modal */
+.modal-overlay { position: fixed; inset: 0; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px); display: flex; justify-content: center; align-items: center; z-index: 100; }
+.modal-overlay.hidden { display: none; }
+.modal-content { background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; width: 100%; max-width: 500px; padding: 24px; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.close-btn { background: none; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer; }
+.close-btn:hover { color: var(--text-primary); }
+
+/* Forms */
+.form-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 13px; font-weight: 500; color: var(--text-muted); }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); font-family: inherit; resize: vertical; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
