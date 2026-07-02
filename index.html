@@ -102,3 +102,107 @@
     <script src="app.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Tracker | Internal Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand-header">
+                <h2>QA Control</h2>
+            </div>
+            <nav class="side-nav">
+                <a href="#" class="active">Active Board</a>
+                <a href="#">Ticket Backlog</a>
+                <a href="#">IT Support Docs</a>
+                <a href="#">Settings</a>
+            </nav>
+        </aside>
+
+        <!-- Main Kanban Board -->
+        <main class="board-container">
+            <header class="board-header">
+                <div>
+                    <h1>Sprint QA Tracker</h1>
+                    <p class="subtitle">Drag and drop tickets to update status.</p>
+                </div>
+                <button id="openModalBtn" class="btn btn-primary">+ Report Bug</button>
+            </header>
+
+            <div class="kanban-board">
+                <!-- Backlog Column -->
+                <div class="kanban-column">
+                    <h3 class="column-title">Backlog <span class="count" id="count-backlog">0</span></h3>
+                    <div class="task-list" id="backlog" data-status="backlog">
+                        <!-- Tasks inject here -->
+                    </div>
+                </div>
+
+                <!-- In Progress Column -->
+                <div class="kanban-column">
+                    <h3 class="column-title">In Progress <span class="count" id="count-in-progress">0</span></h3>
+                    <div class="task-list" id="in-progress" data-status="in-progress">
+                        <!-- Tasks inject here -->
+                    </div>
+                </div>
+
+                <!-- Resolved Column -->
+                <div class="kanban-column">
+                    <h3 class="column-title">Resolved <span class="count" id="count-resolved">0</span></h3>
+                    <div class="task-list" id="resolved" data-status="resolved">
+                        <!-- Tasks inject here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bug Report Modal -->
+    <div id="bugModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Submit Bug Report</h2>
+                <button id="closeModalBtn" class="close-btn">&times;</button>
+            </div>
+            <form id="bugForm">
+                <div class="form-group">
+                    <label>Issue Title</label>
+                    <input type="text" id="bugTitle" required placeholder="Short, descriptive title">
+                </div>
+                <div class="form-group">
+                    <label>Severity Level</label>
+                    <select id="bugSeverity">
+                        <option value="low">Low Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="critical">Critical (Blocker)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Steps to Reproduce</label>
+                    <textarea id="bugSteps" required rows="3" placeholder="1. Go to...&#10;2. Click on..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Expected Behavior</label>
+                    <textarea id="bugExpected" required rows="2" placeholder="What should have happened?"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Actual Behavior</label>
+                    <textarea id="bugActual" required rows="2" placeholder="What actually happened?"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary full-width">Submit Ticket</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
